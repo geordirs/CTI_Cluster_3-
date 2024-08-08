@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from fastapi.openapi.utils import get_openapi
+from fastapi.middleware.cors import CORSMiddleware
 from .database import init_db, engine, Base
 from .routes import products, auth, cart, orders, reviews, recommendations, coupons, notifications
 import os
@@ -12,6 +13,23 @@ app = FastAPI(
     docs_url="/docs",
     redoc_url="/redoc",
 )
+
+# Configuración de CORS
+origins = [
+    "http://localhost:3000",  # Asume que tu frontend está corriendo en el puerto 3000
+    "http://localhost:8080",
+    "http://localhost:7000",
+
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 
 # Inicializar la base de datos
 @app.on_event("startup")
