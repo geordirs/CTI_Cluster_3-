@@ -2,6 +2,8 @@ from fastapi import FastAPI
 from fastapi.openapi.utils import get_openapi
 from .database import init_db, engine, Base
 from .routes import products, auth, cart, orders, reviews, recommendations, coupons, notifications
+import os
+
 
 app = FastAPI(
     title="Ecommerce API",
@@ -12,10 +14,13 @@ app = FastAPI(
 )
 
 # Inicializar la base de datos
-init_db()
+@app.on_event("startup")
+async def startup_event():
+    init_db()
 
 # Crear tablas en la base de datos
-Base.metadata.create_all(bind=engine)
+#Base.metadata.create_all(bind=engine)
+
 
 # Incluir las rutas de productos
 app.include_router(auth.router, tags=["authentication"])
@@ -45,3 +50,4 @@ def custom_openapi():
     return app.openapi_schema
 
 app.openapi = custom_openapi
+
