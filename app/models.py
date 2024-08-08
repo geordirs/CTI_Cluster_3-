@@ -8,6 +8,7 @@ from .database import Base
 import enum
 
 Base = declarative_base()
+#for TEST use db.Base
 
 class Product(Base):
     __tablename__ = "products"

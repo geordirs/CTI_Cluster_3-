@@ -48,8 +48,36 @@ def register_user(user: UserCreate, db: Session) -> UserResponse:
     )
 
 @router.post("/register", response_model=UserResponse)
-def create_user(user: UserCreate, db: Session = Depends(get_db)):
-    return register_user(user, db)
+def register_user(user: UserCreate, db: Session = Depends(get_db)):
+    db_user = db.query(UserModel).filter(UserModel.username == user.username).first()
+    if db_user:
+        raise HTTPException(status_code=400, detail="Username already registered")
+    
+    db_user = db.query(UserModel).filter(UserModel.email == user.email).first()
+    if db_user:
+        raise HTTPException(status_code=400, detail="Email already registered")
+    
+    is_first_user = db.query(UserModel).count() == 0
+    
+    new_user = UserModel(
+        username=user.username,
+        email=user.email,
+        password_hash=get_password_hash(user.password),
+        is_active=True,
+        is_admin=is_first_user
+    )
+    
+    db.add(new_user)
+    db.commit()
+    db.refresh(new_user)
+    
+    return UserResponse(
+        id=new_user.id,
+        username=new_user.username,
+        email=new_user.email,
+        is_active=new_user.is_active,
+        is_admin=new_user.is_admin
+    )
 
 def create_user(db: Session, user: UserCreate, is_admin: bool = False):
     hashed_password = get_password_hash(user.password)
@@ -75,11 +103,11 @@ async def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends(
     return {"access_token": access_token, "token_type": "bearer"}
 
 @router.put("/users/{user_id}/promote")
-def promote_to_admin(user_id: int, db: Session = Depends(get_db), current_user: User = Depends(get_current_active_user)):
+def promote_to_admin(user_id: int, db: Session = Depends(get_db), current_user: UserModel = Depends(get_current_active_user)):
     if not current_user.is_admin:
         raise HTTPException(status_code=403, detail="Only admins can promote users")
     
-    user = db.query(User).filter(User.id == user_id).first()
+    user = db.query(UserModel).filter(UserModel.id == user_id).first()
     if not user:
         raise HTTPException(status_code=404, detail="User not found")
     
