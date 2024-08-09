@@ -19,7 +19,7 @@ origins = [
     "http://localhost:3000",  # Asume que tu frontend está corriendo en el puerto 3000
     "http://localhost:8080",
     "http://localhost:7000",
-
+    "http://localhost:5173",
 ]
 
 app.add_middleware(

@@ -1,25 +1,46 @@
 <script>
-  import { Router, Route, Link} from 'svelte-routing';
-  import Header from './components/Header.svelte';
-  import Home from './routes/Home.svelte';
-  import ProductList from './routes/ProductList.svelte';
-  import ProductDetail from './routes/ProductDetail.svelte';
-  import Cart from './routes/Cart.svelte';
-  import Login from "./routes/Login.svelte";
+  import { onMount } from 'svelte';
+  import { Router, Route } from "svelte-routing";
+  import Nav from "./components/Nav.svelte";
+  import Home from "./routes/Home.svelte";
+  import ProductList from "./routes/ProductList.svelte";
+  import ProductDetail from "./routes/ProductDetail.svelte";
+  import Cart from "./routes/Cart.svelte";
+  import Login from "./components/Login.svelte";
+  import Checkout from "./routes/Checkout.svelte";
+  import AdminPanel from "./routes/AdminPanel.svelte";
+  import { auth } from './stores/auth.js';
 
-  export let url = '';
+  export let url = "";
+
+  onMount(() => {
+    auth.checkAuth();
+  });
+
+  let showLoginModal = false;
+
+  function openLoginModal() {
+    showLoginModal = true;
+  }
+
+  function closeLoginModal() {
+    showLoginModal = false;
+  }
 </script>
 
-
 <Router {url}>
-  <nav class="bg-gray-800 text-white p-4">
-    <Link to="/" class="mr-4">Home</Link>
-    <Link to="/products" class="mr-4">Products</Link>
-    <Link to="/login">Login</Link>
-  </nav>
+  <Nav {openLoginModal} />
 
-  <main>
+  <main class="mt-8 mb-16">
     <Route path="/" component={Home} />
     <Route path="/products" component={ProductList} />
-    <Route path="/login" component={Login} />
+    <Route path="/product/:id" let:params>
+      <ProductDetail id={params.id} />
+    </Route>
+    <Route path="/cart" component={Cart} />
+    <Route path="/checkout" component={Checkout} />
+    <Route path="/admin" component={AdminPanel} />
+  </main>
+
+  <Login showModal={showLoginModal} on:close={closeLoginModal} />
 </Router>
