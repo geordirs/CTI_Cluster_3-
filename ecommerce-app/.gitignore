@@ -22,3 +22,29 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Entorno Virtual
+.venv/
+
+# Dependencias de Node.js
+node_modules/
+
+# Archivos y Directorios Generales
+.DS_Store
+*.log
+
+# Archivos de Caché
+__pycache__/
+*.pyc
+
+# Archivos de Build
+dist/
+build/
+
+# Archivos de Configuración Locales
+.env
+
+# Archivos de Configuración de Editores
+*.sublime-project
+*.sublime-workspace
+.vscode/
