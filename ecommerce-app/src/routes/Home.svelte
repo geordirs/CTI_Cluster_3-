@@ -33,6 +33,16 @@
     {/if}
   
     {#if featuredProducts.length > 0}
+    <div class="mb-16">
+      <h2 class="text-3xl font-semibold mb-6 text-indigo-800">Special Offers</h2>
+      <div class="bg-indigo-600 text-white p-8 rounded-lg text-center">
+        <h3 class="text-2xl font-bold mb-4">Summer Sale!</h3>
+        <p class="text-xl mb-4">Get 20% off on all summer essentials</p>
+        <Link to="/products" class="bg-white text-indigo-600 px-6 py-3 rounded-md font-semibold hover:bg-indigo-100 transition-colors duration-300">
+          Shop Now
+        </Link>
+      </div>
+    </div>
   <div class="mb-16">
     <h2 class="text-3xl font-semibold mb-6 text-indigo-800">Featured Products</h2>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -60,16 +70,6 @@
         Explore All Products
       </Link>
     </div>
-    <div class="mb-16">
-        <h2 class="text-3xl font-semibold mb-6 text-indigo-800">Special Offers</h2>
-        <div class="bg-indigo-600 text-white p-8 rounded-lg text-center">
-          <h3 class="text-2xl font-bold mb-4">Summer Sale!</h3>
-          <p class="text-xl mb-4">Get 20% off on all summer essentials</p>
-          <Link to="/products" class="bg-white text-indigo-600 px-6 py-3 rounded-md font-semibold hover:bg-indigo-100 transition-colors duration-300">
-            Shop Now
-          </Link>
-        </div>
-      </div>
   </div>
 
   

@@ -28,7 +28,13 @@
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {#each products as product}
           <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
-            <img src={product.image_url} alt={product.name} class="w-full h-64 object-cover"/>
+            {#if product.image_url}
+            <img src={product.image_url} alt={product.name} class="w-full h-48 object-cover mb-2 rounded"/>
+            {:else}
+              <div class="w-full h-48 bg-gray-200 flex items-center justify-center mb-2 rounded">
+              <span class="text-gray-500">No image available</span>
+              </div>
+            {/if}
             <div class="p-6">
               <h2 class="text-xl font-semibold mb-2 text-indigo-900">{product.name}</h2>
               <p class="text-gray-600 mb-4">${product.price.toFixed(2)}</p>

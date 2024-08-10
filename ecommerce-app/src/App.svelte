@@ -12,13 +12,8 @@
   import { auth } from './stores/auth.js';
 
   export let url = "";
-
-  onMount(() => {
-    auth.checkAuth();
-  });
-
   let showLoginModal = false;
-
+  
   function openLoginModal() {
     showLoginModal = true;
   }
@@ -26,6 +21,11 @@
   function closeLoginModal() {
     showLoginModal = false;
   }
+
+  onMount(() => {
+    auth.checkAuth();
+  });
+
 </script>
 
 <Router {url}>

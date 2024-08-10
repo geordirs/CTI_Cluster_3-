@@ -4,17 +4,17 @@ function createAuth() {
   const { subscribe, set, update } = writable({
     isAuthenticated: false,
     username: null,
-    role: null
+    isAdmin: false
   });
 
   return {
     subscribe,
-    login: (username, role) => {
-      set({ isAuthenticated: true, username, role });
-      localStorage.setItem('auth', JSON.stringify({ isAuthenticated: true, username, role }));
+    login: (username, isAdmin) => {
+      set({ isAuthenticated: true, username, isAdmin });
+      localStorage.setItem('auth', JSON.stringify({ isAuthenticated: true, username, isAdmin }));
     },
     logout: () => {
-      set({ isAuthenticated: false, username: null, role: null });
+      set({ isAuthenticated: false, username: null, isAdmin: false });
       localStorage.removeItem('auth');
     },
     checkAuth: () => {

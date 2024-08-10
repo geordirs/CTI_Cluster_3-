@@ -25,7 +25,6 @@
         cart.clearCart();
         navigate('/order-confirmation', { state: { orderId: order.id } });
       } catch (error) {
-        console.error('Error creating order:', error);
         alert('Failed to create order. Please try again.');
       }
     }
