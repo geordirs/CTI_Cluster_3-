@@ -1,4 +1,11 @@
-const API_URL = 'http://localhost:8000';
+//const API_URL = 'http://localhost:8000';
+const API_URL = import.meta.env.VITE_API_URL;
+
+async function fetchData() {
+  const response = await fetch(`${API_URL}/endpoint`);
+  const data = await response.json();
+  return data;
+}
 
 const getAuthHeader = () => {
   const token = localStorage.getItem('token');
