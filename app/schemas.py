@@ -88,6 +88,8 @@ class ProductSearchResults(BaseModel):
 class Token(BaseModel):
     access_token: str
     token_type: str
+    username: str
+    is_admin: bool
 
 class TokenData(BaseModel):
     username: Optional[str] = None

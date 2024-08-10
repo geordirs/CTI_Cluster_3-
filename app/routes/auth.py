@@ -98,9 +98,9 @@ async def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends(
         )
     access_token_expires = timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
     access_token = create_access_token(
-        data={"sub": user.username}, expires_delta=access_token_expires
+        data={"sub": user.username, "is_admin": user.is_admin}, expires_delta=access_token_expires
     )
-    return {"access_token": access_token, "token_type": "bearer"}
+    return {"access_token": access_token, "token_type": "bearer", "username": user.username, "is_admin": user.is_admin }
 
 @router.put("/users/{user_id}/promote")
 def promote_to_admin(user_id: int, db: Session = Depends(get_db), current_user: UserModel = Depends(get_current_active_user)):

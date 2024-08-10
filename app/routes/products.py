@@ -7,6 +7,7 @@ from ..database import get_db
 from ..models import Product, User
 from ..schemas import ProductCreate, Product as ProductSchema, ProductUpdate, ProductInventory, ProductSearch, ProductSearchResults
 from ..auth import get_current_active_user, get_current_admin_user
+from datetime import datetime
 
 router = APIRouter()
 

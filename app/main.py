@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from fastapi.openapi.utils import get_openapi
 from fastapi.middleware.cors import CORSMiddleware
 from .database import init_db, engine, Base
-from .routes import products, auth, cart, orders, reviews, recommendations, coupons, notifications
+from .routes import products, auth, users, cart, orders, reviews, recommendations, coupons, notifications
 import os
 
 
@@ -19,7 +19,7 @@ origins = [
     "http://localhost:3000",  # Asume que tu frontend está corriendo en el puerto 3000
     "http://localhost:8080",
     "http://localhost:7000",
-
+    "http://localhost:5173",
 ]
 
 app.add_middleware(
@@ -42,6 +42,7 @@ async def startup_event():
 
 # Incluir las rutas de productos
 app.include_router(auth.router, tags=["authentication"])
+app.include_router(users.router, prefix="/users", tags=["users"])
 app.include_router(products.router, tags=["products"])
 app.include_router(cart.router, tags=["cart"])
 app.include_router(orders.router, tags=["orders"])
