@@ -16,6 +16,7 @@ app = FastAPI(
 
 # Configuración de CORS
 origins = [
+    "https://cti-cluster-3.vercel.app",
     "http://localhost:3000",  # Asume que tu frontend está corriendo en el puerto 3000
     "http://localhost:8080",
     "http://localhost:7000",
