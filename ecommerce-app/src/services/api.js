@@ -1,6 +1,6 @@
 //const API_URL = 'http://localhost:8000';
 //const API_URL = import.meta.env.VITE_API_URL;
-const API_URL = "https://web-production-b61f.up.railway.app/products/";
+const API_URL = "https://web-production-b61f.up.railway.app";
 
 async function fetchData() {
   const response = await fetch(`${API_URL}/endpoint`);
@@ -30,6 +30,7 @@ export const getProducts = async () => {
 };
 
 export const getProduct = async (id) => {
+  console.log("Fetching products from:", `${API_URL}/products/`);
   const response = await fetch(`${API_URL}/products/${id}`, {
     headers: getAuthHeader()
   });
