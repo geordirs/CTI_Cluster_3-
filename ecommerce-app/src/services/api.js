@@ -1,6 +1,6 @@
 //const API_URL = 'http://localhost:8000';
 //const API_URL = import.meta.env.VITE_API_URL;
-const API_URL = "web-production-b61f.up.railway.app";
+const API_URL = "https://web-production-b61f.up.railway.app/products/";
 
 async function fetchData() {
   const response = await fetch(`${API_URL}/endpoint`);
