@@ -6,11 +6,10 @@ This project is a complete e-commerce solution, including a web application, a m
 - **Backend:** Python (FastAPI)
 - **Web Frontend:** Svelte
 - **Mobile Application:** Svelte Native
-- **Desktop Application:** Electron with Svelte
 - **Database:** PostgreSQL
 - **Styles:** TailwindCSS
 - **Version Control:** Git
-- **Hosting:** GitHub Pages (frontend) and Heroku (backend)
+- **Hosting:** Vercel (frontend) and railway.app (backend)
 
 #### Project Structure
 
