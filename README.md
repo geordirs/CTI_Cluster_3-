@@ -38,10 +38,6 @@ ecommerce/
 │   │   ├── components/
 │   │   └── App.svelte
 │   └── package.json
-├── desktop/
-│   ├── src/
-│   │   └── index.js
-│   └── package.json
 ├── .gitignore
 ├── docker-compose.yml
 └── README.md
@@ -76,12 +72,6 @@ cd ../mobile
 npm install
 ```
 
-Set up the desktop application:
-```bash
-cd ../desktop
-npm install
-```
-
 Running the Project
 Backend:
 ```bash
@@ -99,12 +89,6 @@ Mobile Application:
 ```bash
 cd mobile
 npm run android  # or npm run ios
-```
-
-Desktop Application:
-```bash
-cd desktop
-npm start
 ```
 
 Git Workflow
@@ -136,7 +120,6 @@ After review, merge with the main branch.
 - **Authentication system (registration, login, logout)**
 - **Admin panel (CRUD of products)**
 - **Payment process (integration with payment gateway)**
-- **Review and rating system**
 - **User profile and order history**
 
 #### Innovative Idea: Sustainable Products Marketplace
