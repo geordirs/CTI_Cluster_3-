@@ -1,5 +1,5 @@
 # Multiplatform Ecommerce
-This project is a complete e-commerce solution, including a web application, a mobile application, and a desktop version, using modern technologies and following best development practices.
+This project is a complete e-commerce solution, including a web application and a mobile application, using modern technologies and following best development practices.
 
 #### Main Technologies
 
