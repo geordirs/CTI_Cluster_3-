@@ -5,7 +5,6 @@ This project is a complete e-commerce solution, including a web application and 
 
 - **Backend:** Python (FastAPI)
 - **Web Frontend:** Svelte
-- **Mobile Application:** Svelte Native
 - **Database:** PostgreSQL
 - **Styles:** TailwindCSS
 - **Version Control:** Git
@@ -32,12 +31,6 @@ ecommerce/
 │   │   └── App.svelte
 │   ├── public/
 │   └── package.json
-├── mobile/
-│   ├── src/
-│   │   ├── components/
-│   │   └── App.svelte
-│   └── package.json
-├── .gitignore
 ├── docker-compose.yml
 └── README.md
 ```
@@ -82,12 +75,6 @@ Web Frontend:
 ```bash
 cd frontend
 npm run dev
-```
-
-Mobile Application:
-```bash
-cd mobile
-npm run android  # or npm run ios
 ```
 
 Git Workflow
